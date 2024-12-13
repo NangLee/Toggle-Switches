@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Switches :Mpreg:</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color:  	#1e2124;
+        }
+        .left-container {
+            width: 48%;
+        }
+        .right-container {
+            width: 48%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .toggle-container {
+            margin: 10px 0;
+        }
+        .toggle {
+            margin-right: 10px;
+        }
+        .switch-label {
+            margin-right: 10px;
+        }
+        .toggle-item {
+            margin-bottom: 20px;
+        }
+        img {
+            width: 100px; 
+            height: auto;
+            display: inline-block;
+            margin-top: 10px;
+        }
+       
+        .slider-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        .slider {
+            position: relative;
+            width: 60px;
+            height: 34px;
+        }
+        .slider input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider .slider-btn {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+        .slider .slider-btn:before {
+            content: "";
+            position: absolute;
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            background-color: rgb(255, 255, 255);
+            transition: 0.4s;
+            left: 4px;
+            bottom: 4px;
+        }
+        .slider input:checked + .slider-btn {
+            background-color: #4CAF50;
+        }
+        .slider input:checked + .slider-btn:before {
+            transform: translateX(26px);
+        }
+
+        button {
+            margin-right: 30px;
+            background-color: #7289da;
+            color: rgb(238, 238, 238);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /*ok i was lazy and i didnt want to spend time with css so i made chat gpt write this cool ass button*/
+        .coolassbutton {
+            margin-top: 50px;
+            background-color: transparent;  
+  color: #fff;                    
+  border: 2px solid transparent;  
+  padding: 10px 20px;             
+  font-size: 16px;                
+  text-transform: uppercase;      
+  cursor: pointer;              
+  border-radius: 5px;           
+  position: relative;
+  overflow: hidden;                
+  transition: color 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); 
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); 
+  animation: neon-animation 1.5s infinite alternate; 
+}
+
+/* Keyframe animation to make neon glow and change color */
+@keyframes neon-animation {
+  0% {
+    color: #ff00ff;  /* Start with pink text */
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff; /* Pink glow */
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; /* Pink text glow */
+  }
+  25% {
+    color: #00ff00;  /* Green text */
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Green glow */
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; /* Green text glow */
+  }
+  50% {
+    color: #00ffff;  /* Cyan text */
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff; /* Cyan glow */
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff; /* Cyan text glow */
+  }
+  75% {
+    color: #ff0000;  /* Red text */
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000; /* Red glow */
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000; /* Red text glow */
+  }
+  100% {
+    color: #ffff00;  /* Yellow text */
+    box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00, 0 0 30px #ffff00, 0 0 40px #ffff00; /* Yellow glow */
+    text-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00, 0 0 30px #ffff00; /* Yellow text glow */
+  }
+}
+
+/* Optional: Add hover effect to intensify the neon glow */
+.neon-button:hover {
+  color: #ffffff;  /* White text on hover */
+  border-color: #fff; /* Optional: show white border on hover */
+  box-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff, 0 0 45px #ffffff, 0 0 60px #ffffff; /* White glow on hover */
+}
+
+        button:hover {
+            background-color: #000000;
+        }
+    </style>
+</head>
+
+<!--HTML portion-->
+<body>
+
+    <!--Main html page that serves that css cool ass button-->
+    <div class="left-container">
+        <h1 style="color: white;">Toggle Switches :fire:</h1>
+        <p style="color: white;">Put the functions and shit down here</p>
+        <p style="color: white;">Then click the Cool Ass Button at the bottom to render it so it looks good</p>
+        <div class="toggle-container">
+            <label for="switchText" style="color: white;">Enter Switch Text:</label>
+            <input type="text" id="switchText" placeholder="Text for Switch" />
+            <p style="color: white;"><label for="imageLink">Enter Image URL:</label>
+            <input type="url" id="imageLink" placeholder="right click image link" />
+            <button onclick="createToggle()">Create Toggle</button></p>
+        </div>
+
+        <div id="toggles">
+        </div>
+
+        <p><button onclick="renderToggles()" class="coolassbutton">Cool ass button</button></p>
+    </div>
+
+    <div class="right-container" id="renderedToggles">
+        <h2>Press the cool ass button</h2>
+    </div>
+<!--JS portion-->
+    <script>
+        let toggleCount = 0;
+        const toggleSettings = [];
+// just creates that toggle when you click the create toggle button and declares switch and image
+        function createToggle() {
+            const switchText = document.getElementById('switchText').value;
+            const imageLink = document.getElementById('imageLink').value;
+            if (!switchText) {
+                alert("switch text missing");
+                return;
+            }
+
+            toggleCount++;
+
+            toggleSettings.push({
+                id: `toggle-${toggleCount}`,
+                text: switchText,
+                image: imageLink,
+                state: false,
+            });
+            // innder html to create toggles option
+            const toggleDiv = document.createElement('div');
+            toggleDiv.className = 'toggle-item';
+
+            toggleDiv.innerHTML = `
+                <input type="checkbox" class="toggle" id="toggle-${toggleCount}" onchange="toggleSwitch(${toggleCount})">
+                <label for="toggle-${toggleCount}" class="switch-label" style="color: white;">${switchText}</label>
+                <img src="${imageLink}" alt="${switchText}">
+                <br>
+                <label for="linkedSwitchOff-${toggleCount} " style="color: white;">Turns off this switch:</label>
+                <select id="linkedSwitchOff-${toggleCount}" onchange="setLinkedSwitch(${toggleCount}, 'off')">
+                    <option value="">None</option>
+                </select>
+                <label for="linkedSwitchOn-${toggleCount}" style="color: white;">Turns on this switch:</label>
+                <select id="linkedSwitchOn-${toggleCount}" onchange="setLinkedSwitch(${toggleCount}, 'on')">
+                    <option value="">None</option>
+                </select>
+            `;
+
+            document.getElementById('toggles').appendChild(toggleDiv);
+            updateLinkedSwitches();
+            document.getElementById('switchText').value = '';
+            document.getElementById('imageLink').value = '';
+        }
+// what the toggles do
+        function toggleSwitch(index) {
+            const toggle = toggleSettings[index - 1];
+            const toggleElement = document.getElementById(`toggle-${index}`);
+            toggle.state = toggleElement.checked;
+// checkes if the toggle wants another toggle to be off
+            const linkedOffId = toggle.linkedSwitchOffId;
+            if (linkedOffId && toggle.state) {
+                const linkedToggleOff = toggleSettings[linkedOffId - 1];
+                linkedToggleOff.state = false;
+                document.getElementById(`toggle-${linkedOffId}`).checked = false;
+                syncSlider(linkedToggleOff.id);
+            }
+//same thing but with on
+            const linkedOnId = toggle.linkedSwitchOnId;
+            if (linkedOnId && toggle.state) {
+                const linkedToggleOn = toggleSettings[linkedOnId - 1];
+                linkedToggleOn.state = true;
+                document.getElementById(`toggle-${linkedOnId}`).checked = true;
+                syncSlider(linkedToggleOn.id);
+            }
+
+            syncSlider(toggle.id);
+        }
+// ok so when you render the toggles the this just connects the render to the users well erm control side
+        function setLinkedSwitch(index, action) {
+            const linkedSwitchId = document.getElementById(`linkedSwitch${action === 'off' ? 'Off' : 'On'}-${index}`).value;
+            if (action === 'off') {
+                toggleSettings[index - 1].linkedSwitchOffId = linkedSwitchId ? parseInt(linkedSwitchId) : null;
+            } else {
+                toggleSettings[index - 1].linkedSwitchOnId = linkedSwitchId ? parseInt(linkedSwitchId) : null;
+            }
+        }
+
+        function updateLinkedSwitches() {
+            toggleSettings.forEach((toggle, index) => {
+                const offSelect = document.getElementById(`linkedSwitchOff-${index + 1}`);
+                const onSelect = document.getElementById(`linkedSwitchOn-${index + 1}`);
+
+                [offSelect, onSelect].forEach(select => {
+                    select.innerHTML = '<option value="">None</option>';
+                    toggleSettings.forEach((t, i) => {
+                        if (i + 1 !== index + 1) {
+                            const option = document.createElement('option');
+                            option.value = i + 1;
+                            option.textContent = t.text;
+                            select.appendChild(option);
+                        }
+                    });
+                });
+            });
+        }
+//renders the toggles to make em look nice on the css
+        function renderToggles() {
+            const renderedContainer = document.getElementById('renderedToggles');
+            renderedContainer.innerHTML = '<h2 contenteditable="true">Click to edit</h2>';
+
+            toggleSettings.forEach(toggle => {
+                const toggleDiv = document.createElement('div');
+                toggleDiv.className = 'slider-container';
+
+                toggleDiv.innerHTML = `
+                    <p>${toggle.text}</p>
+                    <label class="slider">
+                        <input type="checkbox" id="slider-${toggle.id}" onchange="syncSlider('${toggle.id}')">
+                        <span class="slider-btn"></span>
+                    </label>
+                    <p><img src="${toggle.image}" alt="${toggle.text}"></p>
+                `;
+
+                const slider = toggleDiv.querySelector(`#slider-${toggle.id}`);
+                slider.checked = toggle.state;
+
+                renderedContainer.appendChild(toggleDiv);
+            });
+        }
+//syncs smooth ahh slider to the check boxes for astetics
+        function syncSlider(toggleId) {
+            const toggle = toggleSettings.find(t => t.id === toggleId);
+            const slider = document.getElementById(`slider-${toggleId}`);
+
+            toggle.state = slider.checked;
+            document.getElementById(`toggle-${toggleId.split('-')[1]}`).checked = toggle.state;
+
+            const linkedSwitchOffId = toggle.linkedSwitchOffId;
+            if (linkedSwitchOffId && toggle.state) {
+                const linkedToggleOff = toggleSettings[linkedSwitchOffId - 1];
+                linkedToggleOff.state = false;
+                document.getElementById(`slider-${linkedToggleOff.id}`).checked = false;
+                document.getElementById(`toggle-${linkedToggleOff.id.split('-')[1]}`).checked = false;
+            }
+
+            const linkedSwitchOnId = toggle.linkedSwitchOnId;
+            if (linkedSwitchOnId && toggle.state) {
+                const linkedToggleOn = toggleSettings[linkedSwitchOnId - 1];
+                linkedToggleOn.state = true;
+                document.getElementById(`slider-${linkedToggleOn.id}`).checked = true;
+                document.getElementById(`toggle-${linkedToggleOn.id.split('-')[1]}`).checked = true;
+            }
+        }
+    </script>
+</body>
+</html>
